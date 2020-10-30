@@ -1,0 +1,23 @@
+{
+  "name": "wala",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node scripts/seed.js",
+    "start": "node server.js"
+  },
+  "author": "Edwin Lim",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.10.10"
+  }
+}

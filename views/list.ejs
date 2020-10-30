@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+
+
+</head>
+
+
+
+
+
+    <div class="container">
+        <nav>
+            <a href="/">Home</a>
+        
+        </nav>
+        <div class="col">
+
+            <table class="table">
+                <thead>
+                    <tr class="d-flex row">
+                        <th class="col-1">#</th>
+                        <th class="col-1">Name</th>
+                        <th class="col-1">Postal Code</th>
+                        <th class="col-4">Address</th>
+                        <th class="col-1">Locate</th>
+                        <th class="col-1">Edit</th>
+                        <th class="col-1">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i=0;i<jobs.length;i++) {%>
+                    <tr class="d-flex row">
+                        <th class="col-1"><%=i+1%></th>
+                        <td class="col-1"><%=jobs[i].deliver_to_collect_from%></td>
+                        <td class="col-1">
+                            333333 </td>
+                        <td class="col-4"><%=jobs[i].address %> </td>
+                        <td class="col-1">
+                            <form method="GET" action="/map/<%=jobs[i].id%>">
+
+                                <button type="submit" class="btn btn-info">Locate</button>
+
+                            </form>
+
+
+                        </td>
+                        <td class="col-1">
+
+                            <!-- EDIT SECTION START -->
+
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#purchaseModal<%=jobs[i].id%>">Update</button>
+
+                            <div class="modal fade" id="purchaseModal<%=jobs[i].id %>" tabindex="-1" role="dialog"
+                                aria-labelledby="purchaseLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="purchaseLabel">Delivery Job</h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <!-- FORM ACTION FOR UPDATE -->
+                                            <form method="POST" action="/update/<%=jobs[i].id%>?_method=PATCH">
+                                                <div class="form-group row">
+                                                    <label for="colFormLabelSm"
+                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                        Name</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="name"
+                                                            class="form-control form-control-sm"
+                                                            value="<%=jobs[i].deliver_to_collect_from %> ">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="colFormLabelSm"
+                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                        Address</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="address"
+                                                            class="form-control form-control-sm"
+                                                            value="<%=jobs[i].address%>">
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="colFormLabelSm"
+                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                        ID</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="id"
+                                                            class="form-control form-control-sm"
+                                                            value="<%=jobs[i].id%>">
+                                                    </div>
+                                                </div>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <!-- <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">Close</button> -->
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <!-- <button type="button" class="btn btn-primary">
+                            Edit
+                        </button> -->
+
+
+
+                            <!-- EDIT SECTION ENDS -->
+                        </td>
+                        <td class="col-1">
+                            <form method="POST" action="/delete/<%=jobs[i].id%>?_method=DELETE">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+
+                        </td>
+                    </tr>
+
+
+                    <%}%> 
+
+                       
+                    
+                </tbody>
+            </table>
+
+</div>
+</div>
+
+<%- include ('./partials/footer.ejs'); %>

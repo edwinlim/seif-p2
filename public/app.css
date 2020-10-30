@@ -1,0 +1,32 @@
+.table {
+    width: 120%;
+}
+
+#map {
+    margin-top: 1em;
+    border-top: solid lightgray 1px;
+    padding-top: 5px;
+    height: 100px;
+}
+
+#map {
+  height: 100%;
+  
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.col-form-label {
+    font-size: small;
+}
+
+
+#wayPointInput {
+    padding:20px
+}
