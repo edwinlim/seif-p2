@@ -9,7 +9,7 @@ const controller = require('./controllers/deliveryController')
 const app = express();
 const mongoose = require('mongoose')
 const lodash = require('lodash')
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 //const bakeGoodsController = require('./controllers/BakedGoodsController')
 
